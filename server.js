@@ -17,7 +17,16 @@ app.post('/queryGit', async (req, res)=>{
     try {
         const response = await axios.get(`https://api.github.com/users/${req.body.username}`);
         //console.log(response.data);
-        res.json(response.data.login);
+        if(response.data.public_repos <= 5){
+            res.send('What an Amatuer')
+        } else if (response.data.public_repos > 5 && response.data.public_repos <= 10){
+            res.send('Getting There')
+        } else if(response.data.public_repos > 10 && response.data.public_repos <= 20) {
+            res.send('Pro')
+        } else {
+            res.send('God Tier')
+        }
+        //res.json(response.data.login);
     }
     catch (err) {
         next(err)
