@@ -25,7 +25,7 @@ app.post('/queryGit', async (req, res)=>{
         } else {
             res.send('God Tier')
         }
-        res.json(response.data.login);
+        
     }
     catch (err) {
         next(err)
